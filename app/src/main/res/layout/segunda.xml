@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/cadastrado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cadastrado no calendário"
+        android:textSize="24sp"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/organizacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Convidados e organizador"
+        android:textSize="24sp"
+        android:gravity="center"
+        />
+
+    <EditText
+        android:id="@+id/organizador"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:hint="Organizador"
+        />
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:hint="Email do organizador"
+        />
+    <EditText
+        android:id="@+id/contato1"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:hint="Convidado 1"
+        />
+    <EditText
+        android:id="@+id/telefone1"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:hint="Telefone"
+        />
+    <EditText
+        android:id="@+id/contato2"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:hint="Convidado 2"
+        />
+    <EditText
+        android:id="@+id/telefone2"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:hint="Telefone"
+        />
+    <Button
+        android:id="@+id/botaoconv"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:hint="Cadastrar convidados"
+        android:onClick="enviar"
+        />
+    <Button
+        android:id="@+id/botaoconv"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:hint="Mandar mensagem no whatsapp"
+        android:onClick="whatsapp"
+        />
+
+
+</LinearLayout>
