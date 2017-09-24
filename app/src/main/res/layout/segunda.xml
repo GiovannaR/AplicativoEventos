@@ -72,5 +72,13 @@
         android:onClick="whatsapp"
         />
 
+    <Button
+        android:id="@+id/entrarnoF"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:hint="Postar no facebook"
+        android:onClick="facebook"
+        />
+
 
 </LinearLayout>

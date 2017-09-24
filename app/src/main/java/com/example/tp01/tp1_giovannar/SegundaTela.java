@@ -20,6 +20,7 @@ public class SegundaTela extends AppCompatActivity {
     Calendar instancia = Calendar.getInstance();
     Calendar instancia2 = Calendar.getInstance();
     EditText EditavelOrg, EditavelEmail, Editavelconv1, Editaveltel1 , Editavelconv2, Editaveltel2;
+    int ano, mes, dia, hora, minuto;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,13 +32,13 @@ public class SegundaTela extends AppCompatActivity {
         if (intent != null) {
             Bundle params = intent.getExtras();
             String[] dataInicial = params.getString("dataInicial").split("/");
-            int ano = Integer.parseInt(dataInicial[0]);
-            int mes = Integer.parseInt(dataInicial[1]);
-            int dia = Integer.parseInt(dataInicial[2]);
+            ano = Integer.parseInt(dataInicial[0]);
+            mes = Integer.parseInt(dataInicial[1]);
+            dia = Integer.parseInt(dataInicial[2]);
 
             String[] Inicial = params.getString("horaInicial").split(":");
-            int hora = Integer.parseInt(Inicial[0]);
-            int minuto = Integer.parseInt(Inicial[1]);
+            hora = Integer.parseInt(Inicial[0]);
+            minuto = Integer.parseInt(Inicial[1]);
 
             instancia.set(ano, mes, dia, hora, minuto);
             long startmillisI = instancia.getTimeInMillis();
@@ -45,15 +46,15 @@ public class SegundaTela extends AppCompatActivity {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             String[] dataFinal = params.getString("dataFinal").split("/");
-            ano = Integer.parseInt(dataFinal[0]);
-            mes = Integer.parseInt(dataFinal[1]);
-            dia = Integer.parseInt(dataFinal[2]);
+            int anoF = Integer.parseInt(dataFinal[0]);
+            int mesF = Integer.parseInt(dataFinal[1]);
+            int diaF = Integer.parseInt(dataFinal[2]);
 
             String[] Finalll = params.getString("horaFinal").split(":");
-            hora = Integer.parseInt(Finalll[0]);
-            minuto = Integer.parseInt(Finalll[1]);
+            int horaF = Integer.parseInt(Finalll[0]);
+            int minutoF = Integer.parseInt(Finalll[1]);
 
-            instancia2.set(ano, mes, dia, hora, minuto);
+            instancia2.set(anoF, mesF, diaF, horaF, minutoF);
             long startmillisF = instancia2.getTimeInMillis();
 
             Intent icalen = new Intent(Intent.ACTION_INSERT_OR_EDIT);
@@ -87,7 +88,7 @@ public class SegundaTela extends AppCompatActivity {
         terceira.setType(ContactsContract.RawContacts.CONTENT_TYPE);
 
         // mandando o nome
-        terceira.putExtra(ContactsContract.Intents.Insert.NAME, EditavelOrg.getText().toString());
+        terceira.putExtra(ContactsContract.Intents.Insert.NAME, Editavelconv1.getText().toString());
 
         // mandando email
         //terceira.putExtra(ContactsContract.Intents.Insert.EMAIL, EditavelEmail.getText().toString());
@@ -109,6 +110,20 @@ public class SegundaTela extends AppCompatActivity {
     }
 
     public void whatsapp (View view){
+
+        String mensagem = "Festa no dia " + dia + "/" + mes + "/" + ano + " às " + hora + ":" + minuto +
+                "\n" + "Para mais informações contacte o organizador(a) " + "\nNome do organizador(a): " + EditavelOrg.getText().toString() +
+                "\nEmail do Organizador(a): " + EditavelEmail.getText().toString();
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, mensagem);
+        sendIntent.setType("text/plain");
+        sendIntent.setPackage("com.whatsapp");
+        startActivity(Intent.createChooser(sendIntent, ""));
+
+    }
+
+    public void facebook (View view){
         Intent nova = new Intent(this, Terceira.class);
         startActivity(nova);
     }
