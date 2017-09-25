@@ -3,23 +3,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/cadastrado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cadastrado no calendário"
-        android:textSize="24sp"
-        android:gravity="center"
-        />
 
     <TextView
         android:id="@+id/organizacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Convidados e organizador"
-        android:textSize="24sp"
         android:gravity="center"
-        />
+        android:text="Convidados e organizador"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/organizador"
@@ -45,17 +38,13 @@
         android:layout_height="wrap_content"
         android:hint="Telefone"
         />
-    <EditText
-        android:id="@+id/contato2"
+
+    <Button
+        android:id="@+id/botaomaiscont"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
-        android:hint="Convidado 2"
-        />
-    <EditText
-        android:id="@+id/telefone2"
-        android:layout_width="368dp"
-        android:layout_height="wrap_content"
-        android:hint="Telefone"
+        android:hint="Adicionar convidados"
+        android:onClick="addcontato"
         />
     <Button
         android:id="@+id/botaoconv"
@@ -65,7 +54,7 @@
         android:onClick="enviar"
         />
     <Button
-        android:id="@+id/botaoconv"
+        android:id="@+id/botaowhat"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
         android:hint="Mandar mensagem no whatsapp"
@@ -79,6 +68,8 @@
         android:hint="Postar no facebook"
         android:onClick="facebook"
         />
+
+
 
 
 </LinearLayout>

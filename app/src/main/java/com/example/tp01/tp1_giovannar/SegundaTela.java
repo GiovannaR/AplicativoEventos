@@ -6,9 +6,13 @@ import android.provider.CalendarContract;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 /**
@@ -16,6 +20,8 @@ import java.util.Calendar;
  */
 
 public class SegundaTela extends AppCompatActivity {
+
+    ArrayList<String> arrayList;
 
     Calendar instancia = Calendar.getInstance();
     Calendar instancia2 = Calendar.getInstance();
@@ -26,6 +32,13 @@ public class SegundaTela extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.segunda);
+
+        arrayList = new ArrayList<>();
+
+
+        Editavelconv1 = (EditText) findViewById(R.id.contato1);
+        Editaveltel1 = (EditText) findViewById(R.id.telefone1);
+
 
 
         Intent intent = getIntent();
@@ -77,33 +90,38 @@ public class SegundaTela extends AppCompatActivity {
 
     public void enviar (View view){
 
+
         EditavelOrg = (EditText) findViewById(R.id.organizador);
         EditavelEmail = (EditText) findViewById(R.id.email);
-        Editavelconv1 = (EditText) findViewById(R.id.contato1);
-        Editaveltel1 = (EditText) findViewById(R.id.telefone1);
-        Editavelconv2 = (EditText) findViewById(R.id.contato2);
-        Editaveltel2 = (EditText) findViewById(R.id.telefone2);
 
-        Intent terceira = new Intent(ContactsContract.Intents.Insert.ACTION);
-        terceira.setType(ContactsContract.RawContacts.CONTENT_TYPE);
 
+        int i = 0;
+
+        for ( i = 0; i < arrayList.size(); i++){
+            Intent terceira = new Intent(ContactsContract.Intents.Insert.ACTION);
+            terceira.setType(ContactsContract.RawContacts.CONTENT_TYPE);
+
+            terceira.putExtra(ContactsContract.Intents.Insert.NAME, arrayList.get(i).split(" ")[0]);
+            terceira.putExtra(ContactsContract.Intents.Insert.PHONE, arrayList.get(i).split(" ")[1]);
+            terceira.putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_HOME);
+            startActivity(terceira);
+        }
         // mandando o nome
-        terceira.putExtra(ContactsContract.Intents.Insert.NAME, Editavelconv1.getText().toString());
+
 
         // mandando email
         //terceira.putExtra(ContactsContract.Intents.Insert.EMAIL, EditavelEmail.getText().toString());
         //terceira.putExtra(ContactsContract.Intents.Insert.EMAIL_TYPE, ContactsContract.CommonDataKinds.Email.TYPE_HOME);
 
         // mandando o telefone
-        terceira.putExtra(ContactsContract.Intents.Insert.PHONE, Editaveltel1.getText().toString());
-        terceira.putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_HOME);
+
 
         // mandando o endereco
         //intent.putExtra(ContactsContract.Intents.Insert.POSTAL, end);
         //intent.putExtra(ContactsContract.Intents.Insert.POSTAL_TYPE, ContactsContract.CommonDataKinds.StructuredPostal.TYPE_HOME);
 
         // iniciando a intent
-        startActivity(terceira);
+
 
 
 
@@ -127,6 +145,19 @@ public class SegundaTela extends AppCompatActivity {
         Intent nova = new Intent(this, Terceira.class);
         startActivity(nova);
     }
+
+    public void addcontato (View view){
+
+        Editavelconv1 = (EditText) findViewById(R.id.contato1);
+        Editaveltel1 = (EditText) findViewById(R.id.telefone1);
+
+        String contato = Editavelconv1.getText().toString();
+        String telefone = Editaveltel1.getText().toString();
+        arrayList.add(contato + " " + telefone);
+
+    }
+
+
 }
 
 

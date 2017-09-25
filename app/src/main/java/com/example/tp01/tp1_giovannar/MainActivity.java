@@ -1,5 +1,14 @@
 package com.example.tp01.tp1_giovannar;
 
+/**
+ * Tp1_LDDM
+ * Objetivo: aplicativo que seja capaz de criar um evento no Calendário, adicionar os contatos na agenda, mandar whatsapp, publicar um post sobre o evento no FAcebok e Linkedin
+ * Autora: Giovanna Ávila Riqueti
+ * Matrícula: 553285
+ * Data 25/09/2017
+ * Versão 3
+ */
+
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;

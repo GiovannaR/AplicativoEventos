@@ -9,10 +9,10 @@
         android:id="@+id/registro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Registre o seu Evento!"
         android:textSize="24sp"
-        android:gravity="center"
-        />
+        android:textStyle="bold" />
     <EditText
         android:id="@+id/nome"
         android:layout_width="368dp"
